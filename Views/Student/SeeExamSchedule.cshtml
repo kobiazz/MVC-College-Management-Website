@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SeeExamSchedule</title>
+    <style>
+        html {
+            background-image: url('/Images/sea-edge-79ab30e2.png');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+    @Html.ActionLink("Go Back", "Index", "Home")
+    <div style="color:blue">
+        @foreach (var str in ViewBag.Exam)
+        {
+            @Html.Raw(str); <br />
+        }
+
+    </div>
+</body>
+</html>

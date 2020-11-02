@@ -1,0 +1,101 @@
+﻿@model WebApplication3.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <style>
+        html {
+            background-image: url('/Images/sea-edge-79ab30e2.png');
+            background-size: cover;
+         
+        }
+
+        .button {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #4169E1;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            padding: 10px;
+            width: 130px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+            .button span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
+
+                .button span:after {
+                    content: '\00bb';
+                    position: absolute;
+                    opacity: 0;
+                    top: 0;
+                    right: -20px;
+                    transition: 0.5s;
+                }
+
+            .button:hover span {
+                padding-right: 15px;
+            }
+
+                .button:hover span:after {
+                    opacity: 1;
+                    right: 0;
+                }
+
+
+    </style>
+
+</head>
+<body>
+    <div>
+        <h3 style="color:hotpink">Sign in</h3>
+
+        <img width="250" height="200" src="~/Images/Untitled-1 [22Recovered].png" />
+
+        <i style="color:red">@TempData["error"]</i><br />
+        @using (Html.BeginForm("Authenticate", "Login", FormMethod.Post))
+        {
+            <table>
+
+                <tr>
+                    <td>User Name: </td>
+                    <td> @Html.TextBoxFor(m => m.UserName)</td>
+                    <td><div style="color:red">@Html.ValidationMessageFor(x => x.UserName)</div></td>
+                </tr>
+                <tr>
+                    <td>Password: </td>
+                    <td> @Html.PasswordFor(m => m.Password)</td>
+                    <td><div style="color:red">@Html.ValidationMessageFor(x => x.Password)</div></td>
+                </tr>
+                <tr>
+                    @*<td><input id="Submit1" name="Submit" type="submit" value="Login" /></td>*@
+                    <td> <button class="button" style="vertical-align:middle"><span>Login</span></button>
+                </tr>
+            </table>
+        }
+
+        <p>
+            <div style="color:red">@ViewBag.message</div>
+        </p>
+
+    </div>
+</body>
+</html>

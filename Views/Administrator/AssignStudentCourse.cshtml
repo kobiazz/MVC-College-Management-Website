@@ -1,0 +1,40 @@
+﻿@model WebApplication3.Models.Grades
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AssignStudentCourse</title>
+    <style>
+        html {
+            background-image: url('/Images/sea-edge-79ab30e2.png');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 style="color:red"> Assign Student to Course  </h1><br />
+        @Html.ActionLink("Go Back", "Index", "Home")
+        <table>
+            @using (Html.BeginForm("AssignStudentCourse", "Administrator", FormMethod.Post))
+            {
+                <tr>
+                    <td>ID: </td>
+                    <td>
+                        @Html.TextBoxFor(m => m.StudentId) @Html.ValidationMessageFor(x => x.StudentId)
+                    </td>
+                    @Html.DropDownListFor(y => y.CourseId, new SelectList(ViewBag.CoursesList, "Id", "Name"), "select Course")
+                    <td><input id="Submit5" name="Submit" type="submit" value="Assign" /></td>
+                    @Html.Raw(ViewBag.Error)
+                    @Html.Raw(ViewBag.success2)
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

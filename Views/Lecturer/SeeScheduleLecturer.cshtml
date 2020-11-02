@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SeeScheduleLecturer</title>
+    <style>
+        html {
+            background-image: url('/Images/sea-edge-79ab30e2.png');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="color:indianred; text-align: center;">
+
+        @Html.ActionLink("Go Back", "Index", "Home")
+        <h1 style="color:red">SeeScheduleLecturer </h1><br />
+        @foreach (var str in ViewBag.SchudeleLec)
+        {
+            @Html.Raw(str); <br />
+        }
+
+    </div>
+</body>
+</html>

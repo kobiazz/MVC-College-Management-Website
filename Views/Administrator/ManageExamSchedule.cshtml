@@ -1,0 +1,89 @@
+﻿@model WebApplication3.Models.Course
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ManageExamSchedule</title>
+    <style>
+        html {
+            background-image: url('/Images/sea-edge-79ab30e2.png');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 style="color:red"> Manage Exam Schedule </h1><br />
+        @Html.ActionLink("Go Back", "Index", "Home")
+        @using (Html.BeginForm("ManageExamSchedule", "Administrator", FormMethod.Post))
+        {
+
+                                                         <table>
+                                                             <tr>
+                                                                 <td>Moad A: </td>
+                                                                 <td>
+                                                                     <div class="form-group">
+                                                                         <div class="col-md-10">
+                                                                             @*@Html.TextBoxFor(m => m.Birthday, "{0:yyyy-MM-dd}", new { @class = "form-control", Type = "datetime-local" })*@
+                                                                             @Html.TextBoxFor(m => m.MoadA, "{0:d}", new { type = "date" })
+                                                                             @Html.ValidationMessageFor(m => m.MoadA, "", new { @class = "text-danger" })
+                                                                         </div>
+                                                                     </div>
+                                                                 </td>
+                                                             </tr>
+                                                             <tr>
+                                                                 <td>Moad B: </td>
+                                                                 <td>
+                                                                     <div class="form-group">
+                                                                         <div class="col-md-10">
+                                                                             @*@Html.TextBoxFor(m => m.Birthday, "{0:yyyy-MM-dd}", new { @class = "form-control", Type = "datetime-local" })*@
+                                                                             @Html.TextBoxFor(m => m.MoadB, "{0:d}", new { type = "date" })
+                                                                             @Html.ValidationMessageFor(m => m.MoadB, "", new { @class = "text-danger" })
+                                                                         </div>
+                                                                     </div>
+<tr>  @Html.DropDownListFor(y => y.Name, new SelectList(ViewBag.coursesName, "Name"), "select course")</tr>
+                                                             <td><input id="Submit5" name="Submit" type="submit" value="Update schedule" /></td>
+                                                             <tr>@Html.ViewBag.success4</tr>
+                                                             <tr>@Html.ViewBag.Error</tr>
+                                                             <tr>@Html.ViewBag.Error2</tr>
+
+                                                             @*<td><input id="Submit4" name="Submit" type="submit" value="Insert" /></td>*@
+                                                             
+                                                         </table>
+            @*<table>
+                <tr>Moad A:</tr>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.MoadA, "{0:d}", new { type = "date" })
+                        @Html.ValidationMessageFor(m => m.MoadA, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <
+                <tr>Moad B:</tr>
+
+                <p> </p>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.MoadB, "{0:d}", new { type = "date" })
+                        @Html.ValidationMessageFor(m => m.MoadB, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <tr>  @Html.DropDownListFor(y => y.Name, new SelectList(ViewBag.coursesName, "Name"), "select course")</tr>
+                <td><input id="Submit5" name="Submit" type="submit" value="Update schedule" /></td>
+                <tr>@Html.ViewBag.success4</tr>
+                <tr>@Html.ViewBag.Error</tr>
+                <tr>@Html.ViewBag.Error2</tr>
+            </table>*@
+        }
+    </div>
+</body>
+</html>
+
+

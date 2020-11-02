@@ -1,0 +1,149 @@
+﻿
+@model WebApplication3.Models.Course
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddCourse</title>
+    @*<style>
+            goBackCss {
+                border-color: $blue;
+                color: #fff;
+                box-shadow: 0 0 40px 40px $blue inset, 0 0 0 0 $blue;
+                transition: all 150ms ease-in-out;
+                /*hover
+            {
+                box-shadow: 0 0 10px 0 $blue inset, 0 0 10px 4px $blue;
+            }*/
+        </style>*@
+    <style>
+        html {
+            background-image: url('/Images/sea-edge-79ab30e2.png');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+
+
+        @Html.ActionLink("Go Back", "Index", "Home")
+        <h1 style="color:red"> Add Course  </h1><br />
+        @using (Html.BeginForm("AddCourse", "Administrator", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td>Course Id: </td>
+                    <td>@Html.TextBoxFor(t => t.Id) @Html.ValidationMessageFor(t => t.Id)</td>
+                </tr>
+                <tr>
+                    <td>Course Name: </td>
+                    <td>@Html.TextBoxFor(t => t.Name) @Html.ValidationMessageFor(t => t.Name)</td>
+                </tr>
+                <tr>
+                    <td>Points: </td>
+                    <td>@Html.TextBoxFor(t => t.Points) @Html.ValidationMessageFor(t => t.Points)</td>
+                </tr>
+                <tr>
+                    <td>Lecturer Id: </td>
+                    <td>@Html.TextBoxFor(t => t.LecId) @Html.ValidationMessageFor(t => t.LecId)</td>
+                </tr>
+                <tr>
+                    <td>Lecture's Start Hour [From 8.00 to 19.00]</td>
+
+                    <td>@Html.TextBoxFor(t => t.Hours) @Html.ValidationMessageFor(t => t.Hours)</td>
+                </tr>
+                <tr>
+                    @*<td>Day: </td>
+                    <td>@Html.TextBoxFor(t => t.Day) @Html.ValidationMessageFor(t => t.Day)</td>*@
+                    <script>
+                    @{
+                    List<SelectListItem> listItems = new List<SelectListItem>();
+                    listItems.Add(new SelectListItem { Text = "Sunday", Value = "Sunday" });
+                    listItems.Add(new SelectListItem { Text = "Monday", Value = "Monday" });
+                    listItems.Add(new SelectListItem { Text = "Tuesday", Value = "Tuesday" });
+                    listItems.Add(new SelectListItem { Text = "Wednsday", Value = "Wednsday" });
+                    listItems.Add(new SelectListItem { Text = "Thursday", Value = "Thursday" });
+                    listItems.Add(new SelectListItem { Text = "Friday", Value = "Friday" });
+                }
+                    </script>
+                    <td> Day:</td>
+
+                    <td>  @Html.DropDownListFor(t => t.Day, listItems, "select Day")</td>
+
+
+
+                </tr>
+                <tr>
+                    <td>Class Room: </td>
+                    <td>@Html.TextBoxFor(t => t.ClassRoom) @Html.ValidationMessageFor(t => t.ClassRoom)</td>
+                </tr>
+                <tr>
+
+                    <td>MoadA: </td>
+                    <td>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(t => t.MoadA, "{0:d}", new { type = "date" })
+                                @Html.ValidationMessageFor(t => t.MoadA, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>MoadB: </td>
+                    <td>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(t => t.MoadB, "{0:d}", new { type = "date" })
+                                @Html.ValidationMessageFor(t => t.MoadB, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                @*<tr>
+                    <td>Birthday: </td>
+                    <td>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Birthday, "{0:yyyy-MM-dd}", new { @class = "form-control", Type = "datetime-local" })
+                                @Html.ValidationMessageFor(m => m.Birthday, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    @{
+                        List<SelectListItem> listItems = new List<SelectListItem>();
+                        listItems.Add(new SelectListItem { Text = "Student", Value = "Student" });
+                        listItems.Add(new SelectListItem { Text = "Admin", Value = "Administrator" });
+                        listItems.Add(new SelectListItem { Text = "Lecturer", Value = "Lecturer" });
+                    }
+                    <td>Role: </td>
+                    <td>@Html.DropDownListFor(m => m.UserType, listItems, "select Role")</td>
+
+                </tr>*@
+
+                <tr>
+
+                    <td><input id="Submit4" name="Submit" type="submit" value="Insert" /></td>
+                </tr>
+            </table>
+        }
+
+        <p>
+            <div style="color:red">@ViewBag.message13</div>
+        </p>
+    </div>
+
+    </body>
+
+</html>

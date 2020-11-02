@@ -1,0 +1,92 @@
+﻿
+@model WebApplication3.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddPerson</title>
+    <style>
+        html {
+            background-image: url('/Images/sea-edge-79ab30e2.png');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        @*//???????*@
+        @if (Session["Administrator"] == null)
+        {
+            <a href="@Url.Action("Index","Home")" type="submit" class="lnkbtn lnkbtn_2 Rectangle">I'm new here</a>}
+        @*<a href="@Url.Action("Index", "Home")" type="submit" class="lnkbtn lnkbtn_2 Rectangle">I'm new here</a*@>
+
+
+
+        @Html.ActionLink("Go Back", "Index", "Home")
+        <h1 style="color:red"> Add Person  </h1><br />
+        @using (Html.BeginForm("AddPerson", "Administrator", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td>Id: </td>
+                    <td>@Html.TextBoxFor(m => m.Id) @Html.ValidationMessageFor(x => x.Id)</td>
+                </tr>
+                <tr>
+                    <td>Name: </td>
+                    <td>@Html.TextBoxFor(m => m.Name) @Html.ValidationMessageFor(x => x.Name)</td>
+                </tr>
+                <tr>
+                    <td>Birthday: </td>
+                    <td>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @*@Html.TextBoxFor(m => m.Birthday, "{0:yyyy-MM-dd}", new { @class = "form-control", Type = "datetime-local" })*@
+                                @Html.TextBoxFor(m => m.Birthday, "{0:d}", new { type = "date" })
+                                @Html.ValidationMessageFor(m => m.Birthday, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Phone: </td>
+                    <td>@Html.TextBoxFor(m => m.Phone) @Html.ValidationMessageFor(x => x.Phone)</td>
+                </tr>
+                <tr>
+                    <td>User Name: </td>
+                    <td>@Html.TextBoxFor(m => m.UserName) @Html.ValidationMessageFor(x => x.UserName)</td>
+                </tr>
+                <tr>
+                    <td>Password: </td>
+                    <td>@Html.TextBoxFor(m => m.Password) @Html.ValidationMessageFor(x => x.Password)</td>
+                </tr>
+                <tr>
+                    @{
+                        List<SelectListItem> listItems = new List<SelectListItem>();
+                        listItems.Add(new SelectListItem { Text = "Student", Value = "Student" });
+                        listItems.Add(new SelectListItem { Text = "Admin", Value = "Administrator" });
+                        listItems.Add(new SelectListItem { Text = "Lecturer", Value = "Lecturer" });
+                    }
+                    <td>Role: </td>
+                    <td>@Html.DropDownListFor(m => m.UserType, listItems, "select Role")</td>
+
+                </tr>
+
+                <tr>
+
+                    <td><input id="Submit4" name="Submit" type="submit" value="Insert" /></td>
+                </tr>
+            </table>
+        }
+
+        <p>
+            <div style="color:red">@ViewBag.message13</div>
+        </p>
+    </div>
+                        }
+</body>
+</html>

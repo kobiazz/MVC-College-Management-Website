@@ -1,0 +1,65 @@
+﻿@model WebApplication3.ModelView.CourseViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UpdateGrades</title>
+    <style>
+        html {
+            background-image: url('/Images/sea-edge-79ab30e2.png');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        @Html.ActionLink("Go Back", "Index", "Home")
+        <h1 style="color:red">Update Grades </h1><br />
+        @using (Html.BeginForm("UpdateGrades", "Lecturer", FormMethod.Post))
+
+        {
+            @Html.DropDownListFor(W => W.CourseId, new SelectList(ViewBag.CourseNameForUpdateGrades, "Id", "Name"), "select course", new { onChange = "form.submit();" })
+            @Html.DropDownListFor(W => W.StudentId, new SelectList(ViewBag.NamesStudentList, "Id", "Name"), "select Student", new { onChange = "form.submit();" })
+            <p>
+                <div style="color:red">@ViewBag.currentGrade</div>
+            </p>
+
+            if (ViewBag.gradeA != null)
+            {
+                <p>
+                    Grade moed A:
+                    <br />
+                    @ViewBag.gradeA
+                    <br />
+                    @Html.TextBoxFor(m => m.gradeA)
+                </p>
+
+                <p>
+                    Grade moed B:
+                    <br />
+                    @ViewBag.gradeB
+                    <br />
+                    @if (ViewBag.gradeExist != null)
+                    {
+
+                        <h>Update Grade B:</h>
+                        @Html.TextBoxFor(m => m.gradeB)
+                    }
+                </p>
+
+                <input id="Submit3" name="Submit" type="submit" value="Update" />
+            }
+
+
+            <div style="color:red">@ViewBag.ErrorMessage</div>
+            <div style="color:red">@ViewBag.Error</div>
+          
+        }
+    </div>
+</body>
+</html>

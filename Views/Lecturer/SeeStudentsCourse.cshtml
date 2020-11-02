@@ -1,0 +1,43 @@
+﻿@model WebApplication3.Models.Course
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SeeStudentsCourse</title>
+    <style>
+        html {
+            background-image: url('/Images/sea-edge-79ab30e2.png');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        @Html.ActionLink("Go Back", "Index", "Home")
+   
+        <h1 style="color:red">See Students that learn Lecturers Course </h1><br />
+        @using (Html.BeginForm("SeeStudentsCourse", "Lecturer", FormMethod.Post))
+        {
+            @Html.DropDownListFor(x => x.Id, new SelectList(ViewBag.CourseName, "Id", "Name"), "select course", new { onChange = "form.submit();" })
+
+
+
+            <div style="color:blue">
+                @foreach (var str in ViewBag.userValidatedxxx)
+                {
+                    @Html.Raw(str); <br />
+                }
+
+            </div>
+
+        }
+
+
+    </div>
+</body>
+</html>

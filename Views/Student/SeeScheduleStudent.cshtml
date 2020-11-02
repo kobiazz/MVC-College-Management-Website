@@ -1,0 +1,39 @@
+﻿@model WebApplication3.ModelView.CourseViewModel
+@using WebApplication3.Models;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Schedule Student</title>
+    <style>
+        html {
+            background-image: url('/Images/sea-edge-79ab30e2.png');
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+        @Html.ActionLink("Go Back", "Index", "Home")
+        <p>
+           User ID: <div style="color:red">@ViewBag.message</div>
+        </p>
+
+        <p>
+            <div style="color:blue">
+                @foreach (var str in ViewBag.Schudele)
+                {
+                    @Html.Raw(str); <br />
+                }
+
+            </div>
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+﻿@model WebApplication3.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+    @Html.ActionLink("Log Off","LogOff","Login")
+    <style>
+        html {
+            background-image: url('/Images/sea-edge-79ab30e2.png');
+            background-size: cover;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div>
+
+        <h1 style="color:hotpink"> SCE's Website for managing the Software Department  </h1><br />
+        @if (Session["Student"] != null)
+        {
+            <br />
+            <h3>Hi Student! @*@Model.Name*@</h3>
+            <br />
+            @Html.ActionLink("Schedule", "SeeScheduleStudent", "Student")
+            <br />
+            @Html.ActionLink("Exam Schedule", "SeeExamSchedule", "Student")
+            <br />
+        }
+
+        @if (Session["Lecturer"] != null)
+        {
+            <br />
+            <h3>Hi Lecturer! @*@Model.Name*@</h3>
+            <br />
+            @Html.ActionLink("Schedule", "SeeScheduleLecturer", "Lecturer")
+            <br />
+            @Html.ActionLink("View Student By Course", "SeeStudentsCourse", "Lecturer")
+            <br />
+            @Html.ActionLink("View Grades", "SeeGrades", "Lecturer")
+            <br />
+            @Html.ActionLink("Update Grades", "UpdateGrades", "Lecturer")
+            <br />
+        }
+
+        @if (Session["Administrator"] != null)
+        {
+            <br />
+            <h3>Hi Administrator! @*@Model.Name*@</h3>
+            <br />
+            @Html.ActionLink("Assign Student To Course", "AssignStudentCourse", "Administrator")
+            <br />
+            @Html.ActionLink("Manage Course Schedule", "ManageCourseSchedule", "Administrator")
+            <br />
+
+            @Html.ActionLink("Manage Exam Schedule", "ManageExamSchedule", "Administrator")
+            <br />
+
+            @Html.ActionLink("Update Course Grade", "UpdateGrades", "Lecturer")
+            <br />
+
+            @Html.ActionLink("Add Person", "AddPerson", "Administrator")
+            <br />
+
+            @Html.ActionLink("Add Course", "AddCourse", "Administrator")
+            <br />
+        }
+
+        <i style="color:red">@TempData["success"]</i><br />
+
+
+    </div>
+</body>
+</html>
